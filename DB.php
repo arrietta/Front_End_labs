@@ -10,7 +10,7 @@ class TableRows extends RecursiveIteratorIterator {
   function current() {
     return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
   }
-
+  
   function beginChildren() {
     echo "<tr>";
   }
@@ -30,6 +30,7 @@ try {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $stmt = $conn->prepare("SELECT * FROM USER");
   $stmt->execute();
+  $hello = 0;
 
   // set the resulting array to associative
   $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
