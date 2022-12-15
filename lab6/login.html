@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Login page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      *{
+        margin:10px;
+        background-color:white ;
+      }
+      #Area{
+        background-color:white ;
+      }
+    </style>
+  </head>
+  <body >
+    <h3 id ="email"></h3>
+    <h3 id ="pas"></h3>
+    <img id="img" src="" alt="1212312" height="200" width="170">
+    <h3 id ="name"></h3>
+    <h3 id ="date"></h3>
+    <h3 id ="gender"></h3>
+    <div id ="color" style="height:40px ;width: 40px;"></div>
+    <h3 id ="counry"></h3>
+    <h3 id ="car"></h3>
+    <textarea id="Area"rows="4" cols="50" disabled style="background-color:white ">
+    </textarea>
+
+    <script>
+        document.getElementById('email').innerHTML = localStorage.getItem('email');
+        document.getElementById('pas').innerHTML = localStorage.getItem('password');
+        document.getElementById('name').innerHTML = localStorage.getItem('name');
+        document.getElementById('date').innerHTML = localStorage.getItem('date');
+        document.getElementById('img').src = localStorage.getItem('img');
+        document.getElementById('gender').innerHTML = localStorage.getItem('gender');
+        var c = localStorage.getItem('color');
+        document.getElementById('counry').innerHTML = localStorage.getItem('checkbox');
+        document.getElementById('car').innerHTML = localStorage.getItem('cars');
+        document.getElementById('Area').innerHTML = localStorage.getItem('Area');
+        $('#color').css("background-color",c);
+    </script>
+  </body>
+</html>

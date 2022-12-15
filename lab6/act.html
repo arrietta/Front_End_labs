@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>Login page</title>
+
+    <style>
+      *{
+        margin:10px;
+      }
+    </style>
+  </head>
+  <body >
+    <form onsubmit="onSubmit(event)" action="#">
+      <input id="email" type="text" placeholder="Please enter your email" name="email" required><br>
+      <input id="password" type="password" placeholder="Please enter your password" name="password" required><br>
+      <input id="name" type="name" placeholder="Please enter your name" name="name" required><br>
+      <input id="date" type="datetime-local"  name="date" required><br>
+      <label for="favcolor">Select your favorite color:</label>
+      <input type="color" id="color" name="color"><br>
+      <input type="checkbox" id="checkbox" name="checkbox" value="KAZAKHSTAN">
+      <label for="checkbox">Kazakhstan</label><br>
+      <input type="checkbox" id="checkbox" name="checkbox" value="USA">
+      <label for="checkbox">USA</label><br>
+      <input type="checkbox" id="checkbox" name="checkbox" value="RUSSIA">
+      <label for="checkbox">RUSSIA</label><br>
+      <input type="radio" id="ma" name="gender" value="male">
+      <label for="ma">Male</label><br>
+      <input type="radio" id="fe" name="gender" value="female">
+      <label for="fe">Female</label><br>
+      <textarea id="Area" name="Area" rows="4" cols="50" >
+        HELLO GUYS
+      </textarea>
+      <br>
+      <label for="cars">Choose a car:</label>
+        <select name="cars" id="cars" name="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br>
+      <button type="submit">Save</button>
+    </form>
+    <input type='file' id="uploadBannerImage" onchange="readURL(this);" />
+    <img id="img" src="" alt="" height="200px" width="170px"><br>
+    
+    <a href="login.html" target="_blank">My page</a><br>
+    </pre>
+    
+
+    <script>
+    function onSubmit(event){
+
+        let dannye = event.target;
+        let formdata = new FormData(dannye)
+        
+        let form_data_obj = Object.fromEntries(formdata)
+        
+        console.log(form_data_obj);
+        localStorage.setItem('email', form_data_obj.email)
+        localStorage.setItem('password',form_data_obj.password)
+        localStorage.setItem('name', form_data_obj.name)
+        localStorage.setItem('date', form_data_obj.date)
+        localStorage.setItem('color', form_data_obj.color)
+        localStorage.setItem('gender', form_data_obj.gender)
+        localStorage.setItem('cars', form_data_obj.cars)
+        localStorage.setItem('Area', form_data_obj.Area)
+        localStorage.setItem('checkbox', form_data_obj.checkbox)
+        console.log(form_data_obj.checkbox);
+        event.preventDefault();
+      }
+
+
+      function readURL(input) {
+            document.getElementById("img").style.display = "block";
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById('img').src =  e.target.result;
+                    localStorage.setItem('img',e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+                
+            }
+        }
+    </script>
+  </body>
+</html>
