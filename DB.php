@@ -1,46 +1,24 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>My page</h1>
 <?php
-echo "<table style='border: solid 1px black;'>";
-echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
-
-class TableRows extends RecursiveIteratorIterator {
-  function __construct($it) {
-    parent::__construct($it, self::LEAVES_ONLY);
-  }
-
-  function current() {
-    return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
-  }
-  
-  function beginChildren() {
-    echo "<tr>";
-  }
-
-  function endChildren() {
-    echo "</tr>" . "\n";
-  }
-}
-
-$servername = "localhost";
-$username = "root";
-$password = "Anna13062004";
-$dbname = "set";
-
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("SELECT * FROM USER");
-  $stmt->execute();
-  $hello = 0;
-
-  // set the resulting array to associative
-  $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-  foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-    echo $v;
-  }
-} catch(PDOException $e) {
-  echo "Error: " . $e->getMessage();
-}
-$conn = null;
-echo "</table>";
+session_start(); 
+$login= $_SESSION['ID'];
+include'Conn.php';
+$stmt = $pdo->prepare("SELECT * FROM login where login = '$login' ");
+$stmt->execute();
+$res = $stmt->fetchAll();
+print_r ('<H1>Login '.$res[0]['login']."</H1><br>");
+print_r ('<H1>Password '.$res[0]['password']."</H1><br>");
 ?>
+</body>
+</html>
+
+
 
