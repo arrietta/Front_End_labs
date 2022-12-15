@@ -2,64 +2,68 @@
 <html>
 <head>
   <style>
-    *{
-      margin:10px ;
-      text-align:center ;
-    }
     body{
       background-color:rgb(41, 196, 191);
       
     }
+    *{
+      text-align:center ;
+      margin:10px ;
+     
+    }
   </style>
 </head>
 <body>  
-<h1>Registor</h1>
+  <h1>Login</h1>
   <form onsubmit="onSubmit(event)" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
       <input id="login" type="text" placeholder="login" name="login" required><br>
       <input id="password" type="password" placeholder="Password" name="password" required><br>
       <input type="submit" name="submit" value="Submit">  
   </form>
-  <a href="login.php">Login</a>
+  <a href="index.php">Register</a>
   <?php
   $Pass =$login= "";
-  $is = true;
+  $is = false;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["password"])) {
-      $is = false;
+      
     } else {
+      $is = true;
       $Pass = test_input($_POST["password"]);
     }
     if (empty($_POST["login"])) {
-      $is = false;
+    
     } else {
+      $is = true;
       $login = test_input($_POST["login"]);
     }
-    
+    ;
 
     if($is){
-      include 'Conn.php';
-    try {
+      include'Conn.php';
+
+
+        
+  try {
       
-      $sql = "INSERT INTO login 
-      VALUES ('$login','$Pass')";
-      $pdo->exec($sql);
+    
+    $stmt = $pdo->prepare("SELECT * FROM login where login='$login'and password = '$Pass'");
+    $stmt->execute();
+    $res = $stmt->fetchAll();
+
+    if (count($res)==1){
       session_start();
       $_SESSION['ID'] = $login;
 
-      echo "New record created successfully";
-      ?>
-        <script>
-          window.open('DB.php',"_self");
-        </script>
-      
-      <?php
-      
-      } catch(PDOException $e) {
-        echo'Try again with another login';
-        
+      header("location: DB.php");
+      exit();
+    }
+    
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
       }
-
-      $pdo = null;
+      $conn = null;
+      echo "</table>";
       }
       
     }
