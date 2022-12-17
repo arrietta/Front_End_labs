@@ -1,0 +1,17 @@
+select * from activity_helpers;
+insert into activity_helpers values(1013,'Event');
+insert into activity_helpers values(1108,'Event');
+insert into activity_helpers values(1111,'Event');
+insert into activity_helpers values(1116,'Event');
+insert into activity_helpers values(1163,'Event');
+insert into activity_helpers values(1245,'Event');
+insert into activity_helpers values(1259,'Event');
+insert into activity_helpers values(1262,'Event');
+insert into activity_helpers values(1280,'Event');
+insert into activity_helpers values(1002,'Sana IQ');
+insert into activity_helpers values(1005,'Sana IQ');
+insert into activity_helpers values(1010,'Sana IQ');
+insert into activity_helpers values(1037,'Sana IQ');
+insert into activity_helpers values(1090,'Sana IQ');
+insert into activity_helpers values(1101,'Sana IQ');
+insert into activity_helpers values(1188,'Sana IQ');
