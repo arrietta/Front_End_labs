@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body{
+            background-color: white;
+            margin: 0px;
+        }
+        .box{
+            margin-top: 90px;
+            position: relative;
+            padding: 0;
+            padding-right:3%;
+            padding-left: 3%;    
+            display: flex;
+            z-index: 0;
+        }
+        
+        header{
+            position: fixed;
+            top: 0;
+            height: 90px;
+            width:100%;
+            margin: 0;
+            background-color: #040441;
+            opacity: 0.99;
+            z-index: 1;
+
+        }
+        .Mid{
+            margin-left: 15%;            
+        }
+        .grid-container {
+        display: grid;
+        gap: 10px 10px;
+        
+        }
+        .item {
+        grid-column-start: 3;
+        grid-column-end: 3;
+        }.grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 10px;
+            padding: 10px;
+            margin: 10px;
+            }
+
+        .grid-container > div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 30px;
+        }
+
+        #SDU{
+            text-align: center;
+            color: aliceblue;
+        }
+        .left{
+            position: sticky;
+            width: 225px;
+            height: inherit;
+            background-color: #9c9cb9;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id ='SDU'>SDU STORE</h1>
+    </header>
+    <div class="box">
+        <div class="left">
+            <h1>Filter</h1>
+        </div>
+        <div class="Mid">
+            <div class="grid-container">
+                <img src="T1.jpg" height="100%" width="100%" alt="Photo" >
+                <img src="T2.jpg" height="100%" width="100%" alt="Photo" >
+                <img src="T3.jpg" height="100%" width="100%" alt="Photo" >
+                <img src="T4.jpg" height="100%" width="100%" alt="Photo" >
+                <img src="T5.jpg" height="100%" width="100%" alt="Photo">
+                <img src="T6.jpg" height="100%" width="100%" alt="Photo">
+                <img src="k1.jpg" height="100%" width="100%" alt="Photo">
+                <img src="k2.jpg" height="100%" width="100%" alt="Photo">
+                <img src="k3.jpg" height="100%" width="100%" alt="Photo">
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</body>
+</html>
